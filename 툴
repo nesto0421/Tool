@@ -1,0 +1,170 @@
+mini-tools/
+├─ index.html
+├─ nickname-tool.html
+├─ image-tool.html        (비워둬도 됨)
+├─ table-tool.html        (비워둬도 됨)
+├─ robots.txt
+├─ sitemap.xml
+└─ css/
+   └─ style.css
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>무료 온라인 툴 모음 | 닉네임 생성기</title>
+  <meta name="description" content="설치 없이 바로 쓰는 무료 닉네임 생성기와 온라인 툴 모음" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<header class="container">
+  <h1>무료 온라인 툴 모음</h1>
+  <p>회원가입 없이 바로 사용 가능한 웹 도구</p>
+</header>
+
+<main class="container">
+  <section class="box highlight">
+    <h2>🔥 게임 닉네임 생성기</h2>
+    <p>중복 걱정 없는 닉네임을 자동으로 만들어줍니다.</p>
+    <a class="main-btn" href="nickname-tool.html">닉네임 만들기 →</a>
+  </section>
+</main>
+
+<footer class="container footer">
+  <p>개인정보를 저장하지 않습니다.</p>
+</footer>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>게임 닉네임 생성기</title>
+  <meta name="description" content="게임 닉네임을 무료로 자동 생성해주는 온라인 도구">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<main class="container">
+  <h1>게임 닉네임 생성기</h1>
+  <p>버튼을 누르면 닉네임을 자동으로 추천합니다.</p>
+
+  <div class="controls">
+    <select id="style">
+      <option value="cool">간지</option>
+      <option value="cute">귀여움</option>
+      <option value="simple">심플</option>
+    </select>
+    <button onclick="generate()">닉네임 생성</button>
+  </div>
+
+  <ul id="result"></ul>
+  <button class="regen" onclick="generate()">다시 생성 🔄</button>
+</main>
+
+<script>
+const data = {
+  cool: ["Shadow", "Blaze", "Rogue", "Venom", "Night"],
+  cute: ["Mimi", "Lulu", "Coco", "Dudu", "Bori"],
+  simple: ["Neo", "Ace", "Zen", "Max", "Bit"]
+};
+
+function random(arr) {
+  return arr[Math.floor(Math.random() * arr.length)];
+}
+
+function generate() {
+  const style = document.getElementById("style").value;
+  const list = document.getElementById("result");
+  list.innerHTML = "";
+
+  for (let i = 0; i < 7; i++) {
+    const name = random(data[style]) + Math.floor(Math.random() * 1000);
+    const li = document.createElement("li");
+    li.innerHTML = `
+      <span>${name}</span>
+      <button onclick="copyText('${name}')">복사</button>
+    `;
+    list.appendChild(li);
+  }
+}
+
+function copyText(text) {
+  navigator.clipboard.writeText(text);
+  alert("복사됨: " + text);
+}
+</script>
+
+</body>
+</html>
+
+body {
+  font-family: Arial, sans-serif;
+  background: #fafafa;
+  margin: 0;
+}
+
+.container {
+  max-width: 720px;
+  margin: auto;
+  padding: 16px;
+}
+
+.box {
+  background: #fff;
+  padding: 16px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.highlight {
+  border: 2px solid #222;
+}
+
+.main-btn, .regen, button {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  background: #222;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  margin-top: 8px;
+}
+
+.controls {
+  display: flex;
+  gap: 8px;
+}
+
+#result {
+  list-style: none;
+  padding: 0;
+}
+
+#result li {
+  display: flex;
+  justify-content: space-between;
+  background: #f2f2f2;
+  padding: 8px;
+  border-radius: 6px;
+  margin-bottom: 6px;
+}
+
+User-agent: *
+Allow: /
+
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://nesto0421.github.io/mini-tools/</loc>
+  </url>
+  <url>
+    <loc>https://nesto0421.github.io/mini-tools/nickname-tool.html</loc>
+  </url>
+</urlset>
